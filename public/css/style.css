@@ -1,0 +1,106 @@
+.gambarcard {
+  width: 200px;
+  /* height: 200px; */
+}
+
+.table > tbody > tr > * {
+  vertical-align: middle;
+}
+
+p.dotted {
+  border-style: dotted;
+}
+
+.margintengah {
+  margin: auto;
+}
+
+.logo {
+  width: 100px;
+}
+
+.logo2 {
+  width: 100px;
+}
+
+.fixtop {
+  margin-top: 60px;
+}
+
+.cardcss {
+  margin-left: 10px;
+}
+
+.cardcss2 {
+  font-weight: bold;
+}
+
+.posisitengah {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px;
+}
+
+.css0 {
+  width: 150px;
+  height: 150px;
+}
+
+.latarbelakang {
+  background-image: url("../img/Telkom Indonesia.png");
+  background-size: cover;
+  /* background-position: 10%; */
+  /* background-blend-mode: color; */
+}
+
+.size1 {
+}
+
+/* 
+tanggal pop up ketika klik field text 
+start
+*/
+
+input[type="date"] {
+  position: relative;
+}
+
+/* create a new arrow, because we are going to mess up the native one
+see "List of symbols" below if you want another, you could also try to add a font-awesome icon.. */
+input[type="date"]:after {
+  content: "\25BC";
+  color: #555;
+  padding: 0 5px;
+}
+
+/* change color of symbol on hover */
+input[type="date"]:hover:after {
+  color: #bf1400;
+}
+
+/* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
+}
+
+/* adjust increase/decrease button */
+input[type="date"]::-webkit-inner-spin-button {
+  z-index: 1;
+}
+
+/* adjust clear button */
+input[type="date"]::-webkit-clear-button {
+  z-index: 1;
+}
+/* 
+tanggal pop up ketika klik field text 
+stop
+*/
