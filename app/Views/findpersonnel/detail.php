@@ -42,14 +42,25 @@
 
             <a href="/findpersonnel" class="d-inline">Kembali</a>
 
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
             <?php if (session()->getFlashdata('pesan')) : ?>
                 <div class="alert alert-success" role="alert">
                     <?= session()->getFlashdata('pesan'); ?>
                 </div>
             <?php endif; ?>
+        </div>
+    </div>
+</div>
 
-
-
+<div class="container">
+    <div class="row">
+        <div class="col">
             <div class="card mb-3" style="max-width: 100%;">
                 <h5 class="card-header">
                     Detail Personnel
@@ -125,8 +136,22 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
+
+<div class="container">
+    <div class="row">
+        <div class="col">
             <h5>Summary Report / Blacklist</h5>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
             <div class="list-group">
                 <?php $dataFraudModel = new \App\Models\DataFraudModel(); ?>
                 <?php foreach ($datajenispelaporan as $djp) : ?>
@@ -138,8 +163,21 @@
                     </a>
                 <?php endforeach ?>
             </div>
+        </div>
+    </div>
+</div>
 
+<div class="container">
+    <div class="row">
+        <div class="col">
             <h5 class="mt-3">Summary Appreciation</h5>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
             <div class="list-group">
                 <?php $dataAppreciateModel = new \App\Models\DataAppreciateModel(); ?>
                 <?php foreach ($datalevel as $dlv) : ?>
@@ -151,7 +189,13 @@
                     </a>
                 <?php endforeach ?>
             </div>
+        </div>
+    </div>
+</div>
 
+<div class="container">
+    <div class="row">
+        <div class="col">
             <!-- Personnel Modal -->
             <form action="/findpersonnel/update_personnel/<?= $datapersonnel['id']; ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
@@ -161,7 +205,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Edit Personnel</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Ubah Personnel</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -346,7 +390,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button name="tambahkan" type="submit" class="btn btn-primary">Report!</button>
+                                <button name="tambahkan" type="submit" class="btn btn-primary">Tambahkan</button>
                             </div>
                         </div>
                     </div>
@@ -402,17 +446,17 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button name="tambahkan" type="submit" class="btn btn-primary">Report!</button>
+                                <button name="tambahkan" type="submit" class="btn btn-primary">Tambahkan</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
-
-
         </div>
     </div>
 </div>
+
+
 
 
 <?= $this->EndSection(); ?>
