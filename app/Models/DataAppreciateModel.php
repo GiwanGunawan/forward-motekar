@@ -10,7 +10,7 @@ class DataAppreciateModel extends Model
 
     protected $table      = 'dataappreciate';
     protected $useTimestamps = true;
-    protected $allowedFields = ['id', 'slug', 'nik', 'level', 'tanggal_appreciate', 'keterangan', 'created_at', 'updated_at'];
+    protected $allowedFields = ['id', 'id_personnel', 'slug', 'nik', 'level', 'tanggal_appreciate', 'keterangan', 'created_at', 'updated_at'];
 
     // public function hitungdata($nik)
     // {

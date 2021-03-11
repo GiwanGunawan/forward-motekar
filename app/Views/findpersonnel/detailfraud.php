@@ -15,7 +15,7 @@
                 </div>
             <?php endif; ?>
 
-            <a href="/findpersonnel/<?= $datapersonnel['nik']; ?>">Kembali</a>
+            <a href="/findpersonnel/<?= $datapersonnel['id']; ?>">Kembali</a>
 
             <?php foreach ($datafraud as $df) :  ?>
                 <div class="card mb-3" style="max-width: 100%;">
@@ -78,8 +78,8 @@
                                 <!-- http method spoofing -->
                                 <form action="/report/<?= $df['id']; ?>" method="post" class="d-inline">
                                     <?= csrf_field(); ?>
-                                    <input type="hidden" name="nik" value="<?= $datapersonnel['nik']; ?>">
-                                    <input type="hidden" name="deletedetailfraud" value="deletedetailfraud">
+                                    <input type="hidden" name="id" value="<?= $datapersonnel['id']; ?>">
+                                    <!-- <input type="hidden" name="deletedetailfraud" value="deletedetailfraud"> -->
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-danger mb-3 mt-3" onclick="return confirm('apakah anda yakin?');">Hapus</button>
                                 </form>
@@ -87,7 +87,7 @@
                                 <form action="/findpersonnel/update_report/<?= $df['id']; ?>" method="post" enctype="multipart/form-data">
                                     <?= csrf_field(); ?>
                                     <input type="hidden" name="gambar_eksis" value="<?= $df['upload_gambar']; ?>">
-                                    <input type="hidden" name="nik" value="<?= $datapersonnel['nik']; ?>">
+                                    <input type="hidden" name="id" value="<?= $datapersonnel['id']; ?>">
                                     <div class="modal fade" id="exampleModal<?= $df['id']; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">

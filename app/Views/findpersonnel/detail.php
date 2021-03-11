@@ -156,9 +156,9 @@
                 <?php $dataFraudModel = new \App\Models\DataFraudModel(); ?>
                 <?php foreach ($datajenispelaporan as $djp) : ?>
                     <?php
-                    $testaja = $dataFraudModel->where(['nik' => $datapersonnel['nik'], 'jenis_pelaporan' => $djp['jenis_pelaporan']])->countAllResults();
+                    $testaja = $dataFraudModel->where(['id_personnel' => $datapersonnel['id'], 'jenis_pelaporan' => $djp['jenis_pelaporan']])->countAllResults();
                     ?>
-                    <a href="/findpersonnel/<?= $datapersonnel['nik']; ?>/<?= $djp['jenis_pelaporan']; ?>" class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
+                    <a href="/findpersonnel/<?= $datapersonnel['id']; ?>/<?= $djp['jenis_pelaporan']; ?>" class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
                         <?= $djp['jenis_pelaporan']; ?><span class="badge badge-primary badge-pill"><?= $testaja; ?></span>
                     </a>
                 <?php endforeach ?>
@@ -182,9 +182,9 @@
                 <?php $dataAppreciateModel = new \App\Models\DataAppreciateModel(); ?>
                 <?php foreach ($datalevel as $dlv) : ?>
                     <?php
-                    $testaja = $dataAppreciateModel->where(['nik' => $datapersonnel['nik'], 'level' => $dlv['level']])->countAllResults();
+                    $testaja = $dataAppreciateModel->where(['id_personnel' => $datapersonnel['id'], 'level' => $dlv['level']])->countAllResults();
                     ?>
-                    <a href="/findpersonnel/appreciate/<?= $datapersonnel['nik']; ?>/<?= $dlv['level']; ?>" class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
+                    <a href="/findpersonnel/appreciate/<?= $datapersonnel['id']; ?>/<?= $dlv['level']; ?>" class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
                         <?= $dlv['level']; ?><span class="badge badge-primary badge-pill"><?= $testaja; ?></span>
                     </a>
                 <?php endforeach ?>
@@ -200,7 +200,7 @@
             <form action="/findpersonnel/update_personnel/<?= $datapersonnel['id']; ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="gambar_eksis" value="<?= $datapersonnel['upload_gambar']; ?>">
-                <input name="id" type="hidden" value="<?= $datapersonnel['id']; ?>">
+                <!-- <input name="id" type="hidden" value="<?= $datapersonnel['id']; ?>"> -->
                 <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -315,6 +315,7 @@
                 <?= csrf_field(); ?>
                 <input name="nama" type="hidden" value="<?= $datapersonnel['nama']; ?>">
                 <input name="nik" type="hidden" value="<?= $datapersonnel['nik']; ?>">
+                <input name="id" type="hidden" value="<?= $datapersonnel['id']; ?>">
                 <div class="modal fade" id="reportModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -402,6 +403,7 @@
                 <?= csrf_field(); ?>
                 <input name="nama" type="hidden" value="<?= $datapersonnel['nama']; ?>">
                 <input name="nik" type="hidden" value="<?= $datapersonnel['nik']; ?>">
+                <input name="id" type="hidden" value="<?= $datapersonnel['id']; ?>">
                 <div class="modal fade" id="appreciateModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">

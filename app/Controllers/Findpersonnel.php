@@ -49,13 +49,13 @@ class Findpersonnel extends BaseController
         return view('findpersonnel/index', $data);
     }
 
-    public function detail($nik)
+    public function detail($id)
     {
 
         $data = [
             'validation' => \Config\Services::validation(),
             'title' => 'Detail Personnel',
-            'datapersonnel' => $this->dataPersonnelModel->detail($nik),
+            'datapersonnel' => $this->dataPersonnelModel->detail($id),
             'datajenispelaporan' => $this->dataJenisPelaporanModel->findAll(),
             'dataloker' => $this->dataLokerModel->findAll(),
             'datastream' => $this->dataStreamModel->findAll(),
@@ -63,13 +63,13 @@ class Findpersonnel extends BaseController
             'datalevel' => $this->dataLevelModel->findAll(),
         ];
         if (empty($data['datapersonnel'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException("Data Personnel dengan NIK " . $nik . " tidak ditemukan");
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Data Personnel dengan ID " . $id . " tidak ditemukan");
         }
 
         return view('findpersonnel/detail', $data);
     }
 
-    public function detailfraud($nik, $jenispelaporan)
+    public function detailfraud($id, $jenispelaporan)
     {
         // dd($this->dataFraudModel->where(['nik' => $nik, 'jenis_pelaporan' => $jenispelaporan])->findAll());
         $data = [
@@ -77,20 +77,20 @@ class Findpersonnel extends BaseController
             'title' => 'Detail Fraud',
             // 'test1' => $nik,
             // 'test2' => $jenispelaporan,
-            'datafraud' => $this->dataFraudModel->where(['nik' => $nik, 'jenis_pelaporan' => $jenispelaporan])->orderBy('id', 'DESC')->findAll(),
-            'datapersonnel' => $this->dataPersonnelModel->detail($nik),
+            'datafraud' => $this->dataFraudModel->where(['id_personnel' => $id, 'jenis_pelaporan' => $jenispelaporan])->orderBy('id', 'DESC')->findAll(),
+            'datapersonnel' => $this->dataPersonnelModel->detail($id),
             'datajenispelaporan' => $this->dataJenisPelaporanModel->findAll(),
         ];
         return view('findpersonnel/detailfraud', $data);
     }
 
-    public function detailappreciate($nik, $level)
+    public function detailappreciate($id, $level)
     {
         $data = [
             'validation' => \Config\Services::validation(),
             'title' => 'Detail Appreciate',
-            'dataappreciate' => $this->dataAppreciateModel->where(['nik' => $nik, 'level' => $level])->orderBy('id', 'DESC')->findAll(),
-            'datapersonnel' => $this->dataPersonnelModel->detail($nik),
+            'dataappreciate' => $this->dataAppreciateModel->where(['id_personnel' => $id, 'level' => $level])->orderBy('id', 'DESC')->findAll(),
+            'datapersonnel' => $this->dataPersonnelModel->detail($id),
             'datalevel' => $this->dataLevelModel->findAll(),
         ];
         return view('findpersonnel/detailappreciate', $data);
@@ -166,7 +166,8 @@ class Findpersonnel extends BaseController
 
     public function update_personnel($id)
     {
-        $dataPersonnelLama = $this->dataPersonnelModel->where(['id' => $this->request->getVar('id')])->first();
+        // $dataPersonnelLama = $this->dataPersonnelModel->where(['id' => $this->request->getVar('id')])->first();
+        $dataPersonnelLama = $this->dataPersonnelModel->where(['id' => $id])->first();
 
         if ($dataPersonnelLama['nik'] == $this->request->getVar('nik')) {
             $rule_nik = 'required';
@@ -194,7 +195,7 @@ class Findpersonnel extends BaseController
 
         ])) {
             session()->setFlashdata('tanda2', 'showmodal');
-            return redirect()->to('/findpersonnel/' . $this->request->getVar('nik'))->withInput();
+            return redirect()->to('/findpersonnel/' . $id)->withInput();
         }
 
         if (($_FILES['upload_gambar']['name'] == "") && ($_FILES['upload_gambar']['size'] == 0)) {
@@ -240,7 +241,7 @@ class Findpersonnel extends BaseController
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah.');
 
-        return redirect()->to("/findpersonnel/" . $this->request->getVar('nik'));
+        return redirect()->to("/findpersonnel/" . $id);
     }
 
 
@@ -281,7 +282,7 @@ class Findpersonnel extends BaseController
             // $nik = $this->request->getVar('nik');
             // session()->setFlashdata('tanda3', $nik);
             session()->setFlashdata('tanda2', 'showreportmodal');
-            return redirect()->to("/findpersonnel/" . $this->request->getVar('nik'))->withInput();
+            return redirect()->to("/findpersonnel/" . $this->request->getVar('id'))->withInput();
         }
         if (($_FILES['upload_gambar']['name'] == "") && ($_FILES['upload_gambar']['size'] == 0)) {
             $namagambar = null;
@@ -300,6 +301,7 @@ class Findpersonnel extends BaseController
         }
 
         $this->dataFraudModel->save([
+            'id_personnel' => $this->request->getVar('id'),
             'nik' => $this->request->getVar('nik'),
             'jenis_pelaporan' => $this->request->getVar('jenis_pelaporan'),
             'label_odp' => $this->request->getVar('label_odp'),
@@ -315,10 +317,10 @@ class Findpersonnel extends BaseController
         delete_files('img/uploadbuffer');
 
         session()->setFlashdata('pesan', 'Data report berhasil ditambahkan.');
-        $nik = $this->request->getVar('nik');
-        session()->setFlashdata('tanda1', $nik);
+        // $nik = $this->request->getVar('nik');
+        // session()->setFlashdata('tanda1', $nik);
 
-        return redirect()->to("/findpersonnel/" . $this->request->getVar('nik'));
+        return redirect()->to("/findpersonnel/" . $this->request->getVar('id'));
     }
 
 
@@ -344,7 +346,7 @@ class Findpersonnel extends BaseController
         ])) {
             session()->setFlashdata('tanda2', 'showmodal');
             $dataFraudLama = $this->dataFraudModel->where(['id' => $id])->first();
-            return redirect()->to("/findpersonnel/" . $this->request->getVar('nik') . "/" . $dataFraudLama['jenis_pelaporan'])->withInput();
+            return redirect()->to("/findpersonnel/" . $this->request->getVar('id') . "/" . $dataFraudLama['jenis_pelaporan'])->withInput();
         }
 
         if (($_FILES['upload_gambar']['name'] == "") && ($_FILES['upload_gambar']['size'] == 0)) {
@@ -388,7 +390,7 @@ class Findpersonnel extends BaseController
             'upload_gambar' => $namagambar
         ]);
         session()->setFlashdata('pesan', 'Data report berhasil diubah.');
-        return redirect()->to("/findpersonnel/" . $this->request->getVar('nik') . "/" . $this->request->getVar('jenis_pelaporan'));
+        return redirect()->to("/findpersonnel/" . $this->request->getVar('id') . "/" . $this->request->getVar('jenis_pelaporan'));
     }
 
 
@@ -402,7 +404,7 @@ class Findpersonnel extends BaseController
 
         $this->dataFraudModel->delete($id);
         session()->setFlashdata('pesan', 'Data report berhasil dihapus.');
-        return redirect()->to('/findpersonnel/' . $this->request->getVar('nik'));
+        return redirect()->to('/findpersonnel/' . $this->request->getVar('id'));
     }
 
 
@@ -425,12 +427,13 @@ class Findpersonnel extends BaseController
         ])) {
 
             session()->setFlashdata('tanda2', 'showappreciatemodal');
-            return redirect()->to('/findpersonnel/' . $this->request->getVar('nik'))->withInput();
+            return redirect()->to('/findpersonnel/' . $this->request->getVar('id'))->withInput();
         }
 
 
 
         $this->dataAppreciateModel->save([
+            'id_personnel' => $this->request->getVar('id'),
             'nik' => $this->request->getVar('nik'),
             'level' => $this->request->getVar('level'),
             'tanggal_appreciate' => $this->request->getVar('tanggal_appreciate'),
@@ -441,10 +444,10 @@ class Findpersonnel extends BaseController
         delete_files('img/uploadbuffer');
 
         session()->setFlashdata('pesan', 'Data appreciate berhasil ditambahkan.');
-        $nik = $this->request->getVar('nik');
-        session()->setFlashdata('tanda1', $nik);
+        // $nik = $this->request->getVar('nik');
+        // session()->setFlashdata('tanda1', $nik);
 
-        return redirect()->to("/findpersonnel/" . $this->request->getVar('nik'));
+        return redirect()->to("/findpersonnel/" . $this->request->getVar('id'));
     }
 
     public function update_appreciate($id)
@@ -468,7 +471,7 @@ class Findpersonnel extends BaseController
 
             session()->setFlashdata('tanda2', 'showmodal');
             $dataAppreciateLama = $this->dataAppreciateModel->where(['id' => $id])->first();
-            return redirect()->to("/findpersonnel/appreciate/" . $this->request->getVar('nik') . "/" . $dataAppreciateLama['level'])->withInput();
+            return redirect()->to("/findpersonnel/appreciate/" . $this->request->getVar('id') . "/" . $dataAppreciateLama['level'])->withInput();
         }
 
         $this->dataAppreciateModel->save([
@@ -479,13 +482,13 @@ class Findpersonnel extends BaseController
         ]);
         session()->setFlashdata('pesan', 'Data appreciation berhasil diubah.');
 
-        return redirect()->to("/findpersonnel/appreciate/" . $this->request->getVar('nik') . "/" . $this->request->getVar('level'));
+        return redirect()->to("/findpersonnel/appreciate/" . $this->request->getVar('id') . "/" . $this->request->getVar('level'));
     }
 
     public function delete_appreciate($id)
     {
         $this->dataAppreciateModel->delete($id);
         session()->setFlashdata('pesan', 'Data appreciation berhasil dihapus.');
-        return redirect()->to('/findpersonnel/' . $this->request->getVar('nik'));
+        return redirect()->to('/findpersonnel/' . $this->request->getVar('id'));
     }
 }

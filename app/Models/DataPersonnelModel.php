@@ -20,10 +20,10 @@ class DataPersonnelModel extends Model
         // return $this->table('datapersonnel')->like('nama', $keyword)->orLike('nik', $keyword)->orLike('nik_ta', $keyword)->orLike('alamat', $keyword);
         return $this->like('nama', $keyword)->orLike('nik', $keyword)->orLike('nik_ta', $keyword);
     }
-    public function detail($nik)
+    public function detail($id)
     {
         $builder = $this->table('datapersonnel');
-        $builder->where('nik', $nik);
+        $builder->where('id', $id);
         return $builder->first();
     }
 }

@@ -213,7 +213,7 @@
                             <td><?= $dp['nama']; ?></td>
                             <td><?= $dp['nik']; ?></td>
                             <td><?= $dp['nik_ta']; ?></td>
-                            <td><a href="/findpersonnel/<?= $dp['nik']; ?>" class="btn btn-success">Detail</a></td>
+                            <td><a href="/findpersonnel/<?= $dp['id']; ?>" class="btn btn-success">Detail</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
