@@ -17,11 +17,11 @@
 
         });
     </script>
-<?php elseif (session()->getFlashdata('tanda2') == 'showappreciatemodal') : ?>
+<?php elseif (session()->getFlashdata('tanda2') == 'showappreciationmodal') : ?>
     <script>
         $(document).ready(function() {
             // Show the Modal on load
-            $("#appreciateModal").modal("show");
+            $("#appreciationModal").modal("show");
 
         });
     </script>
@@ -36,7 +36,7 @@
                 + Report
             </button>
 
-            <button type="button" class="btn btn-success  mb-3 mt-3" data-toggle="modal" data-target="#appreciateModal">
+            <button type="button" class="btn btn-success  mb-3 mt-3" data-toggle="modal" data-target="#appreciationModal">
                 + Appreciation
             </button>
 
@@ -179,12 +179,12 @@
     <div class="row">
         <div class="col">
             <div class="list-group">
-                <?php $dataAppreciateModel = new \App\Models\DataAppreciateModel(); ?>
+                <?php $dataAppreciationModel = new \App\Models\DataAppreciationModel(); ?>
                 <?php foreach ($datalevel as $dlv) : ?>
                     <?php
-                    $testaja = $dataAppreciateModel->where(['id_personnel' => $datapersonnel['id'], 'level' => $dlv['level']])->countAllResults();
+                    $testaja = $dataAppreciationModel->where(['id_personnel' => $datapersonnel['id'], 'level' => $dlv['level']])->countAllResults();
                     ?>
-                    <a href="/findpersonnel/appreciate/<?= $datapersonnel['id']; ?>/<?= $dlv['level']; ?>" class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
+                    <a href="/findpersonnel/appreciation/<?= $datapersonnel['id']; ?>/<?= $dlv['level']; ?>" class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
                         <?= $dlv['level']; ?><span class="badge badge-primary badge-pill"><?= $testaja; ?></span>
                     </a>
                 <?php endforeach ?>
@@ -399,14 +399,14 @@
                 </div>
             </form>
 
-            <!-- Appreciate Modal -->
-            <form action="/findpersonnel/save_appreciate" method="post" enctype="multipart/form-data">
+            <!-- Appreciation Modal -->
+            <form action="/findpersonnel/save_appreciation" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <input name="nama" type="hidden" value="<?= $datapersonnel['nama']; ?>">
                 <input name="nik" type="hidden" value="<?= $datapersonnel['nik']; ?>">
                 <input name="nik_ta" type="hidden" value="<?= $datapersonnel['nik_ta']; ?>">
                 <input name="id" type="hidden" value="<?= $datapersonnel['id']; ?>">
-                <div class="modal fade" id="appreciateModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="appreciationModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -434,7 +434,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Tanggal/Tahun</label>
                                     <div class="col-sm-8">
-                                        <input name="tanggal_appreciate" class="form-control" type="date" value="<?= (old('tanggal_appreciate')) ? old('tanggal_appreciate') : date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>">
+                                        <input name="tanggal_appreciation" class="form-control" type="date" value="<?= (old('tanggal_appreciation')) ? old('tanggal_appreciation') : date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>">
                                     </div>
                                 </div>
 

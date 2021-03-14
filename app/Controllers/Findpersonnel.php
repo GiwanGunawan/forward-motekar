@@ -11,7 +11,7 @@ class Findpersonnel extends BaseController
     protected $dataStreamModel;
     protected $dataWitelModel;
     protected $dataLevelModel;
-    protected $dataAppreciateModel;
+    protected $dataAppreciationModel;
 
     public function __construct()
     {
@@ -22,7 +22,7 @@ class Findpersonnel extends BaseController
         $this->dataStreamModel = new \App\Models\DataStreamModel();
         $this->dataWitelModel = new \App\Models\DataWitelModel();
         $this->dataLevelModel = new \App\Models\DataLevelModel();
-        $this->dataAppreciateModel = new \App\Models\DataAppreciateModel();
+        $this->dataAppreciationModel = new \App\Models\DataAppreciationModel();
     }
 
     public function index()
@@ -84,16 +84,16 @@ class Findpersonnel extends BaseController
         return view('findpersonnel/detailfraud', $data);
     }
 
-    public function detailappreciate($id, $level)
+    public function detailappreciation($id, $level)
     {
         $data = [
             'validation' => \Config\Services::validation(),
-            'title' => 'Detail Appreciate',
-            'dataappreciate' => $this->dataAppreciateModel->where(['id_personnel' => $id, 'level' => $level])->orderBy('id', 'DESC')->findAll(),
+            'title' => 'Detail Appreciation',
+            'dataappreciation' => $this->dataAppreciationModel->where(['id_personnel' => $id, 'level' => $level])->orderBy('id', 'DESC')->findAll(),
             'datapersonnel' => $this->dataPersonnelModel->detail($id),
             'datalevel' => $this->dataLevelModel->findAll(),
         ];
-        return view('findpersonnel/detailappreciate', $data);
+        return view('findpersonnel/detailappreciation', $data);
     }
 
 
@@ -414,7 +414,7 @@ class Findpersonnel extends BaseController
     }
 
 
-    public function save_appreciate()
+    public function save_appreciation()
     {
         if (!$this->validate([
             'level' => [
@@ -432,33 +432,33 @@ class Findpersonnel extends BaseController
 
         ])) {
 
-            session()->setFlashdata('tanda2', 'showappreciatemodal');
+            session()->setFlashdata('tanda2', 'showappreciationmodal');
             return redirect()->to('/findpersonnel/' . $this->request->getVar('id'))->withInput();
         }
 
 
 
-        $this->dataAppreciateModel->save([
+        $this->dataAppreciationModel->save([
             'id_personnel' => $this->request->getVar('id'),
             'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
             'nik_ta' => $this->request->getVar('nik_ta'),
             'level' => $this->request->getVar('level'),
-            'tanggal_appreciate' => $this->request->getVar('tanggal_appreciate'),
+            'tanggal_appreciation' => $this->request->getVar('tanggal_appreciation'),
             'keterangan' => $this->request->getVar('keterangan'),
         ]);
 
         helper('filesystem');
         delete_files('img/uploadbuffer');
 
-        session()->setFlashdata('pesan', 'Data appreciate berhasil ditambahkan.');
+        session()->setFlashdata('pesan', 'Data appreciation berhasil ditambahkan.');
         // $nik = $this->request->getVar('nik');
         // session()->setFlashdata('tanda1', $nik);
 
         return redirect()->to("/findpersonnel/" . $this->request->getVar('id'));
     }
 
-    public function update_appreciate($id)
+    public function update_appreciation($id)
     {
 
         if (!$this->validate([
@@ -478,38 +478,126 @@ class Findpersonnel extends BaseController
         ])) {
 
             session()->setFlashdata('tanda2', 'showmodal');
-            $dataAppreciateLama = $this->dataAppreciateModel->where(['id' => $id])->first();
-            return redirect()->to("/findpersonnel/appreciate/" . $this->request->getVar('id') . "/" . $dataAppreciateLama['level'])->withInput();
+            $dataAppreciationLama = $this->dataAppreciationModel->where(['id' => $id])->first();
+            return redirect()->to("/findpersonnel/appreciation/" . $this->request->getVar('id') . "/" . $dataAppreciationLama['level'])->withInput();
         }
 
-        $this->dataAppreciateModel->save([
+        $this->dataAppreciationModel->save([
             'id' => $id,
             'id_personnel' => $this->request->getVar('id'),
             'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
             'nik_ta' => $this->request->getVar('nik_ta'),
             'level' => $this->request->getVar('level'),
-            'tanggal_appreciate' => $this->request->getVar('tanggal_appreciate'),
+            'tanggal_appreciation' => $this->request->getVar('tanggal_appreciation'),
             'keterangan' => $this->request->getVar('keterangan'),
         ]);
         session()->setFlashdata('pesan', 'Data appreciation berhasil diubah.');
 
-        return redirect()->to("/findpersonnel/appreciate/" . $this->request->getVar('id') . "/" . $this->request->getVar('level'));
+        return redirect()->to("/findpersonnel/appreciation/" . $this->request->getVar('id') . "/" . $this->request->getVar('level'));
     }
 
-    public function delete_appreciate($id)
+    public function delete_appreciation($id)
     {
-        $this->dataAppreciateModel->delete($id);
+        $this->dataAppreciationModel->delete($id);
         session()->setFlashdata('pesan', 'Data appreciation berhasil dihapus.');
         return redirect()->to('/findpersonnel/' . $this->request->getVar('id'));
     }
 
-    public function summary()
+    public function summaryreport()
     {
+
+
+
         $data = [
-            'title' => 'Summary',
+            'title' => 'Summary Report',
+            'datafraud' => $this->dataFraudModel
+                ->select('id_personnel,nama,nik,nik_ta ,COUNT(*) AS count')
+                ->groupBy('id_personnel')
+                ->orderBy('count', 'DESC')
+                ->findAll()
 
         ];
-        return view('findpersonnel/summary', $data);
+
+        return view('findpersonnel/summaryreport', $data);
+    }
+
+    public function summaryappreciation()
+    {
+        $data = [
+            'title' => 'Summary Appreciation',
+            'dataappreciation' => $this->dataAppreciationModel
+                ->select('id_personnel,nama,nik,nik_ta ,COUNT(*) AS count')
+                ->groupBy('id_personnel')
+                ->orderBy('count', 'DESC')
+                ->findAll()
+
+        ];
+        return view('findpersonnel/summaryappreciation', $data);
+    }
+
+    public function rawreport()
+    {
+        $data = [
+            'title' => 'Raw Report',
+            'datafraud' => $this->dataFraudModel->findAll()
+
+        ];
+        return view('findpersonnel/rawreport', $data);
+    }
+
+    public function rawappreciation()
+    {
+        $data = [
+            'title' => 'Raw Appreciation',
+            'dataappreciation' => $this->dataAppreciationModel->findAll()
+
+        ];
+        return view('findpersonnel/rawappreciation', $data);
+    }
+
+    public function excelsumreport()
+    {
+        $data = [
+            'datafraud' => $this->dataFraudModel
+                ->select('id_personnel,nama,nik,nik_ta ,COUNT(*) AS count')
+                ->groupBy('id_personnel')
+                ->orderBy('count', 'DESC')
+                ->findAll()
+
+        ];
+        return view('findpersonnel/excelsumreport', $data);
+    }
+
+    public function excelsumappreciation()
+    {
+        $data = [
+            'dataappreciation' => $this->dataAppreciationModel
+                ->select('id_personnel,nama,nik,nik_ta ,COUNT(*) AS count')
+                ->groupBy('id_personnel')
+                ->orderBy('count', 'DESC')
+                ->findAll()
+
+        ];
+        return view('findpersonnel/excelsumappreciation', $data);
+    }
+
+    public function excelrawreport()
+    {
+        $data = [
+            'datafraud' => $this->dataFraudModel->findAll()
+
+        ];
+        return view('findpersonnel/excelrawreport', $data);
+    }
+
+
+    public function excelrawappreciation()
+    {
+        $data = [
+            'dataappreciation' => $this->dataAppreciationModel->findAll()
+
+        ];
+        return view('findpersonnel/excelrawappreciation', $data);
     }
 }

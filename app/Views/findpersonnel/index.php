@@ -47,7 +47,9 @@
             <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
                 + Tambah personnel
             </button>
-            <a href="/summary" class="btn btn-info mb-3">Lihat Summary</a>
+            <a href="/summaryreport" class="btn btn-info mb-3">Summary Blacklist</a>
+            <a href="/summaryappreciation" class="btn btn-info mb-3">Summary Appreciation</a>
+
         </div>
     </div>
 </div>
@@ -198,7 +200,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
                         <th scope="col">Nama</th>
                         <th scope="col">NIK</th>
                         <th scope="col">NIK MITRA</th>

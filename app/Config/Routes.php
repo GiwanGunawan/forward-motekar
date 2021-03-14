@@ -34,16 +34,23 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'Home::index');
 $routes->get('/findpersonnel', 'Findpersonnel::index');
-$routes->get('/findpersonnel/appreciate/(:any)/(:any)', 'Findpersonnel::detailappreciate/$1/$2');
+$routes->get('/findpersonnel/appreciation/(:any)/(:any)', 'Findpersonnel::detailappreciation/$1/$2');
 $routes->get('/findpersonnel/(:any)/(:any)', 'Findpersonnel::detailfraud/$1/$2');
 $routes->delete('/findpersonnel/(:num)', 'Findpersonnel::delete_personnel/$1');
 $routes->get('/findpersonnel/(:any)', 'Findpersonnel::detail/$1');
 $routes->get('/report', 'Report::index');
 $routes->delete('/report/(:num)', 'Findpersonnel::delete_report/$1');
-$routes->delete('/appreciate/(:num)', 'Findpersonnel::delete_appreciate/$1');
+$routes->delete('/appreciation/(:num)', 'Findpersonnel::delete_appreciation/$1');
 // $routes->get('/report/(:any)', 'Report::detail/$1');
 $routes->get('/coba', 'Coba::index');
-$routes->get('/summary', 'Findpersonnel::summary');
+$routes->get('/summaryreport', 'Findpersonnel::summaryreport');
+$routes->get('/summaryappreciation', 'Findpersonnel::summaryappreciation');
+$routes->get('/rawreport', 'Findpersonnel::rawreport');
+$routes->get('/rawappreciation', 'Findpersonnel::rawappreciation');
+$routes->get('/excelsumreport', 'Findpersonnel::excelsumreport');
+$routes->get('/excelsumappreciation', 'Findpersonnel::excelsumappreciation');
+$routes->get('/excelrawreport', 'Findpersonnel::excelrawreport');
+$routes->get('/excelrawappreciation', 'Findpersonnel::excelrawappreciation');
 
 
 /*
