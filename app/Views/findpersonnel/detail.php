@@ -316,6 +316,7 @@
                 <input name="nama" type="hidden" value="<?= $datapersonnel['nama']; ?>">
                 <input name="nik" type="hidden" value="<?= $datapersonnel['nik']; ?>">
                 <input name="id" type="hidden" value="<?= $datapersonnel['id']; ?>">
+                <input name="nik_ta" type="hidden" value="<?= $datapersonnel['nik_ta']; ?>">
                 <div class="modal fade" id="reportModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -403,6 +404,7 @@
                 <?= csrf_field(); ?>
                 <input name="nama" type="hidden" value="<?= $datapersonnel['nama']; ?>">
                 <input name="nik" type="hidden" value="<?= $datapersonnel['nik']; ?>">
+                <input name="nik_ta" type="hidden" value="<?= $datapersonnel['nik_ta']; ?>">
                 <input name="id" type="hidden" value="<?= $datapersonnel['id']; ?>">
                 <div class="modal fade" id="appreciateModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">

@@ -302,7 +302,9 @@ class Findpersonnel extends BaseController
 
         $this->dataFraudModel->save([
             'id_personnel' => $this->request->getVar('id'),
+            'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
+            'nik_ta' => $this->request->getVar('nik_ta'),
             'jenis_pelaporan' => $this->request->getVar('jenis_pelaporan'),
             'label_odp' => $this->request->getVar('label_odp'),
             'pelapor' => $this->request->getVar('pelapor'),
@@ -380,6 +382,10 @@ class Findpersonnel extends BaseController
 
         $this->dataFraudModel->save([
             'id' => $id,
+            'id_personnel' => $this->request->getVar('id'),
+            'nama' => $this->request->getVar('nama'),
+            'nik' => $this->request->getVar('nik'),
+            'nik_ta' => $this->request->getVar('nik_ta'),
             'jenis_pelaporan' => $this->request->getVar('jenis_pelaporan'),
             'label_odp' => $this->request->getVar('label_odp'),
             'pelapor' => $this->request->getVar('pelapor'),
@@ -434,7 +440,9 @@ class Findpersonnel extends BaseController
 
         $this->dataAppreciateModel->save([
             'id_personnel' => $this->request->getVar('id'),
+            'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
+            'nik_ta' => $this->request->getVar('nik_ta'),
             'level' => $this->request->getVar('level'),
             'tanggal_appreciate' => $this->request->getVar('tanggal_appreciate'),
             'keterangan' => $this->request->getVar('keterangan'),
@@ -476,6 +484,10 @@ class Findpersonnel extends BaseController
 
         $this->dataAppreciateModel->save([
             'id' => $id,
+            'id_personnel' => $this->request->getVar('id'),
+            'nama' => $this->request->getVar('nama'),
+            'nik' => $this->request->getVar('nik'),
+            'nik_ta' => $this->request->getVar('nik_ta'),
             'level' => $this->request->getVar('level'),
             'tanggal_appreciate' => $this->request->getVar('tanggal_appreciate'),
             'keterangan' => $this->request->getVar('keterangan'),
