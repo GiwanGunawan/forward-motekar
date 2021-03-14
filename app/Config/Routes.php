@@ -43,6 +43,7 @@ $routes->delete('/report/(:num)', 'Findpersonnel::delete_report/$1');
 $routes->delete('/appreciate/(:num)', 'Findpersonnel::delete_appreciate/$1');
 // $routes->get('/report/(:any)', 'Report::detail/$1');
 $routes->get('/coba', 'Coba::index');
+$routes->get('/summary', 'Findpersonnel::summary');
 
 
 /*

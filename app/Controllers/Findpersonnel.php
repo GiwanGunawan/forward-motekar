@@ -503,4 +503,13 @@ class Findpersonnel extends BaseController
         session()->setFlashdata('pesan', 'Data appreciation berhasil dihapus.');
         return redirect()->to('/findpersonnel/' . $this->request->getVar('id'));
     }
+
+    public function summary()
+    {
+        $data = [
+            'title' => 'Summary',
+
+        ];
+        return view('findpersonnel/summary', $data);
+    }
 }

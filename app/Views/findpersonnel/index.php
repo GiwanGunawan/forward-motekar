@@ -47,6 +47,7 @@
             <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
                 + Tambah personnel
             </button>
+            <a href="/summary" class="btn btn-info mb-3">Lihat Summary</a>
         </div>
     </div>
 </div>
