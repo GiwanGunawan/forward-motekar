@@ -54,7 +54,7 @@ app.baseURL = 'https://forward.motekar.id/'
 database.default.hostname = localhost
 database.default.database = motekari_forward
 database.default.username = motekari_forward_username
-database.default.password = J2DSRK$WYAcL
+database.default.password = w7H&@X~mFY{g
 database.default.DBDriver = MySQLi
 
 # database.tests.hostname = localhost
