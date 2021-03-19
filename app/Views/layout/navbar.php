@@ -8,7 +8,7 @@
             <div class="navbar-nav">
                 <a class="nav-link" href="/findpersonnel">Appreciation & Blacklist</a>
                 <a class="nav-link disabled" href="/">POT</a>
-                <a class="nav-link disabled" href="/">VOT</a>
+                <a class="nav-link " href="/vot">VOT</a>
             </div>
             <a class="nav-link" href="/logout">Logout</a>
         </div>

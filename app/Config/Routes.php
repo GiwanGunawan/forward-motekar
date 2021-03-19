@@ -47,6 +47,9 @@ $routes->get('/summaryreport', 'Findpersonnel::summaryreport');
 $routes->get('/summaryappreciation', 'Findpersonnel::summaryappreciation');
 $routes->get('/rawreport', 'Findpersonnel::rawreport');
 $routes->get('/rawappreciation', 'Findpersonnel::rawappreciation');
+$routes->get('/vot', 'Vot::index');
+
+//route untuk download file excel
 $routes->get('/excelsumreport', 'Findpersonnel::excelsumreport');
 $routes->get('/excelsumappreciation', 'Findpersonnel::excelsumappreciation');
 $routes->get('/excelrawreport', 'Findpersonnel::excelrawreport');
