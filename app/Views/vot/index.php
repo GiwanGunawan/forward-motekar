@@ -3,12 +3,11 @@
 
 <div class="container mb-3">
     <div class="row">
-        <div class="col-4">
-
+        <div class="col-sm-3">
 
             <form action="" method="POST">
                 <?= csrf_field(); ?>
-                <select name="filtervot" class="form-control btn btn-info" onchange="this.form.submit()">
+                <select name="filtervot" class="form-control btn btn-primary" onchange="this.form.submit()">
                     <option value="">ALL</option>
                     <?php foreach ($TbFilterVotModel as $tbfv) : ?>
 
