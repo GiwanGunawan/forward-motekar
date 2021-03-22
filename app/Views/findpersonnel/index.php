@@ -29,7 +29,7 @@
             <form action="" method="post">
                 <?= csrf_field(); ?>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Cari berdasarkan Nama, NIK, atau NIK MITRA" name="keyword" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input type="text" class="form-control" placeholder="Cari berdasarkan Nama, NIK, atau NIK MITRA" name="keyword" aria-label="Recipient's username" aria-describedby="button-addon2" value="<?= $keyword; ?>">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="submit" id="button-addon2" name="submit">Cari</button>
                     </div>

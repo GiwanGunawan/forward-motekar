@@ -39,11 +39,13 @@ class Findpersonnel extends BaseController
             'validation' => \Config\Services::validation(),
             'title' => 'Appreciation & Blacklist',
             'datapersonnel' => $datapersonnel->orderBy('id', 'DESC')->paginate(100, 'datapersonnel'),
-            'pager' => $this->dataPersonnelModel->pager,
+            // 'pager' => $this->dataPersonnelModel->pager,
+            'pager' => $datapersonnel->pager,
             'currentPage' => $currentPage,
             'dataloker' => $this->dataLokerModel->findAll(),
             'datastream' => $this->dataStreamModel->findAll(),
             'datawitel' => $this->dataWitelModel->findAll(),
+            'keyword' => $this->request->getVar('keyword')
         ];
 
         return view('findpersonnel/index', $data);

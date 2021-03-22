@@ -1,6 +1,28 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->Section('content'); ?>
 
+<div class="container mb-3">
+    <div class="row">
+        <div class="col">
+
+
+            <form action="" method="POST">
+                <?= csrf_field(); ?>
+                <select name="filtervot" class="form-control btn btn-info" onchange="this.form.submit()">
+                    <option value="">ALL</option>
+                    <?php foreach ($TbFilterVotModel as $tbfv) : ?>
+
+                        <option <?= ($filtervot == $tbfv['opsi'] ? 'selected' : ''); ?> value="<?= $tbfv['opsi']; ?>"><?= $tbfv['opsi']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
 <div class="container">
     <div class="row">
         <div class="col">
