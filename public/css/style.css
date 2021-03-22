@@ -1,3 +1,8 @@
+.css0 {
+  width: 150px;
+  height: 150px;
+}
+
 .gambarcard {
   width: 200px;
   /* height: 200px; */
@@ -39,11 +44,6 @@ p.dotted {
   vertical-align: middle;
   text-align: center;
   padding: 10px;
-}
-
-.css0 {
-  width: 150px;
-  height: 150px;
 }
 
 .latarbelakang {
@@ -104,3 +104,5 @@ input[type="date"]::-webkit-clear-button {
 tanggal pop up ketika klik field text 
 stop
 */
+
+display: flex;
