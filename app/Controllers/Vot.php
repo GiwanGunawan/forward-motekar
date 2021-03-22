@@ -18,7 +18,7 @@ class Vot extends BaseController
     public function index()
     {
         if ($this->request->getVar('filtervot')) {
-            $TbConversation = $this->TbConversationModel->like(['notes' => $this->request->getVar('filtervot')])->where(['status' => 'stopped'])->findAll();
+            $TbConversation = $this->TbConversationModel->orderBy('id', 'DESC')->like(['notes' => $this->request->getVar('filtervot')])->where(['status' => 'stopped'])->findAll();
         } else {
             $TbConversation = $this->TbConversationModel->orderBy('id', 'DESC')->where(['status' => 'stopped'])->findAll();
         }
