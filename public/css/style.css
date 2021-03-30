@@ -3,6 +3,10 @@
   height: 150px;
 }
 
+.css1 {
+  font-size: medium;
+}
+
 .gambarcard {
   width: 200px;
   /* height: 200px; */
@@ -104,5 +108,3 @@ input[type="date"]::-webkit-clear-button {
 tanggal pop up ketika klik field text 
 stop
 */
-
-display: flex;
