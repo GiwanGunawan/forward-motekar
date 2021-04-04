@@ -205,120 +205,136 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="container ">
-                <p>Tanggal Assessment : <?= $tb_assessment['tanggal_assessment']; ?></p>
-                <p>Total perolehan score : <?= $tb_assessment['sumcolall']; ?></p>
-                <p>Hasil Kelulusan : <?= $tb_assessment['hasil']; ?></p>
-                <p>Detail Assessment :</p>
+<?php if ($tb_assessment != null) : ?>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container ">
+                    <p>Tanggal Assessment : <?= $tb_assessment['tanggal_assessment']; ?></p>
+                    <p>Total perolehan score : <?= $tb_assessment['sumcolall']; ?></p>
+                    <p>Hasil Kelulusan : <?= $tb_assessment['hasil']; ?></p>
+                    <p>Detail Assessment :</p>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Score</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="css3">
+                            <td> Test Standard Pemasangan</td>
+                            <td><?= $tb_assessment['sumcol123']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Pemasangan S-Klem <span class="badge badge-secondary">(score: <?= $tb_assessment['col1']; ?>)</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Pemasangan DC ke OTP <span class="badge badge-secondary">(score: <?= $tb_assessment['col2']; ?>)</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Pemasangan DC ke ODC <span class="badge badge-secondary">(score: <?= $tb_assessment['col3']; ?>)</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="css3">
+                            <td>Test Pembuatan SOC</td>
+                            <td><?= $tb_assessment['col4']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah SOC yang benar (sisa 1)
+                                <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 15) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
+                                </span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah SOC yang benar (sisa 0)
+                                <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 10) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
+                                </span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Gagal atau perlu tambahan
+                                <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 0) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
+                                </span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                        <tr class="css3">
+                            <td>Test Redaman</td>
+                            <td><?= $tb_assessment['col5']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Redaman SOC < 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 55) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Redaman SOC 0.7 - 0.9 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 35) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Redaman SOC > 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 20) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>LOS <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 0) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="css3">
+                            <td>Test Kebersihan dan K3</td>
+                            <td><?= $tb_assessment['sumcol678']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Sisa potongan DC atau Core <span class="badge badge-secondary">(score: <?= $tb_assessment['col6']; ?>)</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Pemakaian APD <span class="badge badge-secondary">(score: <?= $tb_assessment['col7']; ?>)</span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Kerapihan dan kebersihan peralatan setelah praktik <span class="badge badge-secondary">(score: <?= $tb_assessment['col8']; ?>)</span></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Item</th>
-                        <th scope="col">Score</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="css3">
-                        <td> Test Standard Pemasangan</td>
-                        <td><?= $tb_assessment['sumcol123']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Pemasangan S-Klem <span class="badge badge-secondary">(score: <?= $tb_assessment['col1']; ?>)</span></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Pemasangan DC ke OTP <span class="badge badge-secondary">(score: <?= $tb_assessment['col2']; ?>)</span></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Pemasangan DC ke ODC <span class="badge badge-secondary">(score: <?= $tb_assessment['col3']; ?>)</span></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr class="css3">
-                        <td>Test Pembuatan SOC</td>
-                        <td><?= $tb_assessment['col4']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Jumlah SOC yang benar (sisa 1)
-                            <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 15) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
-                            </span>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Jumlah SOC yang benar (sisa 0)
-                            <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 10) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
-                            </span>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Gagal atau perlu tambahan
-                            <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 0) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
-                            </span>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td> </td>
-                    </tr>
-                    <tr class="css3">
-                        <td>Test Redaman</td>
-                        <td><?= $tb_assessment['col5']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Redaman SOC < 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 55) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Redaman SOC 0.7 - 0.9 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 35) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Redaman SOC > 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 20) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>LOS <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 0) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr class="css3">
-                        <td>Test Kebersihan dan K3</td>
-                        <td><?= $tb_assessment['sumcol678']; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Sisa potongan DC atau Core <span class="badge badge-secondary">(score: <?= $tb_assessment['col6']; ?>)</span></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Pemakaian APD <span class="badge badge-secondary">(score: <?= $tb_assessment['col7']; ?>)</span></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Kerapihan dan kebersihan peralatan setelah praktik <span class="badge badge-secondary">(score: <?= $tb_assessment['col8']; ?>)</span></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-
         </div>
     </div>
-</div>
+<?php else : ?>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            Tidak ada record
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+<?php endif; ?>
 
 <div class="container">
     <div class="row">
