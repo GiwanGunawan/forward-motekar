@@ -40,6 +40,10 @@
                 + Appreciation
             </button>
 
+            <button type="button" class="btn btn-success  mb-3 mt-3" data-toggle="modal" data-target="#assessmentModal">
+                + Assessment
+            </button>
+
             <a href="/findpersonnel" class="d-inline">Kembali</a>
 
         </div>
@@ -144,7 +148,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h5>Summary Report / Blacklist</h5>
+            <h5 class="alert alert-secondary">Summary Report / Blacklist</h5>
         </div>
     </div>
 </div>
@@ -170,7 +174,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h5 class="mt-3">Summary Appreciation</h5>
+            <h5 class="mt-3 alert alert-secondary">Summary Appreciation</h5>
         </div>
     </div>
 </div>
@@ -192,6 +196,129 @@
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h5 class="mt-3 alert alert-secondary">Summary Assessment Kompetensi Teknis</h5>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="container ">
+                <p>Tanggal Assessment : <?= $tb_assessment['tanggal_assessment']; ?></p>
+                <p>Total perolehan score : <?= $tb_assessment['sumcolall']; ?></p>
+                <p>Hasil Kelulusan : <?= $tb_assessment['hasil']; ?></p>
+                <p>Detail Assessment :</p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Score</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="css3">
+                        <td> Test Standard Pemasangan</td>
+                        <td><?= $tb_assessment['sumcol123']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Pemasangan S-Klem <span class="badge badge-secondary">(score: <?= $tb_assessment['col1']; ?>)</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Pemasangan DC ke OTP <span class="badge badge-secondary">(score: <?= $tb_assessment['col2']; ?>)</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Pemasangan DC ke ODC <span class="badge badge-secondary">(score: <?= $tb_assessment['col3']; ?>)</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="css3">
+                        <td>Test Pembuatan SOC</td>
+                        <td><?= $tb_assessment['col4']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Jumlah SOC yang benar (sisa 1)
+                            <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 15) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
+                            </span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Jumlah SOC yang benar (sisa 0)
+                            <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 10) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
+                            </span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Gagal atau perlu tambahan
+                            <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 0) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
+                            </span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr class="css3">
+                        <td>Test Redaman</td>
+                        <td><?= $tb_assessment['col5']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Redaman SOC < 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 55) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Redaman SOC 0.7 - 0.9 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 35) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Redaman SOC > 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 20) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>LOS <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 0) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="css3">
+                        <td>Test Kebersihan dan K3</td>
+                        <td><?= $tb_assessment['sumcol678']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Sisa potongan DC atau Core <span class="badge badge-secondary">(score: <?= $tb_assessment['col6']; ?>)</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Pemakaian APD <span class="badge badge-secondary">(score: <?= $tb_assessment['col7']; ?>)</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Kerapihan dan kebersihan peralatan setelah praktik <span class="badge badge-secondary">(score: <?= $tb_assessment['col8']; ?>)</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
 
 <div class="container">
     <div class="row">
@@ -456,11 +583,250 @@
                     </div>
                 </div>
             </form>
+
+
+            <!-- Assessment Modal -->
+            <form action="/Findpersonnel/save_assessment_komptek" method="post" enctype="multipart/form-data">
+                <?= csrf_field(); ?>
+                <input name="id" type="hidden" value="<?= $datapersonnel['id']; ?>">
+                <input name="nama" type="hidden" value="<?= $datapersonnel['nama']; ?>">
+                <input name="nik" type="hidden" value="<?= $datapersonnel['nik']; ?>">
+                <input name="nik_ta" type="hidden" value="<?= $datapersonnel['nik_ta']; ?>">
+                <div class="modal fade" id="assessmentModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tambahkan Assesment</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Tanggal/Tahun</label>
+                                    <div class="col-sm-8">
+                                        <input name="tanggal_assessment" class="form-control" type="date" value="<?= (old('tanggal_appreciation')) ? old('tanggal_appreciation') : date('Y-m-d'); ?>" max="<?php echo date('Y-m-d'); ?>">
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <h6 class="alert alert-dark">Test Standard Pemasangan</h6>
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Pemasangan S-Klem</legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col1" id="col1" value="0" checked>
+                                            <label class="form-check-label" for="col1">
+                                                0
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col1" id="col1" value="5">
+                                            <label class="form-check-label" for="col1">
+                                                5
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Pemasangan DC ke ODP</legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col2" id="col2" value="0" checked>
+                                            <label class="form-check-label" for="col2">
+                                                0
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col2" id="col2" value="5">
+                                            <label class="form-check-label" for="col2">
+                                                5
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Pemasangan DC ke ODC</legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col3" id="col3" value="0" checked>
+                                            <label class="form-check-label" for="col3">
+                                                0
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col3" id="col3" value="5">
+                                            <label class="form-check-label" for="col3">
+                                                5
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <hr>
+
+                                <h6 class="alert alert-dark">Test Pembuatan SOC</h6>
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Jumlah SOC yang benar (sisa 1)</legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col4" id="col4" value="15" checked>
+                                            <label class="form-check-label" for="col4">
+                                                15
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Jumlah SOC yang benar (sisa 0)</legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col4" id="col4" value="10">
+                                            <label class="form-check-label" for="col4">
+                                                10
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Gagal atau perlu tambahan</legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col4" id="col4" value="0">
+                                            <label class="form-check-label" for="col4">
+                                                0
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <hr>
+
+                                <h6 class="alert alert-dark">Test Redaman</h6>
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Redaman SOC < 0.7dB </legend>
+                                            <div class="col-sm-3">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="col5" id="col5" value="55" checked>
+                                                    <label class="form-check-label" for="col5">
+                                                        55
+                                                    </label>
+                                                </div>
+                                            </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Redaman SOC 0.7dB - 0.9dB </legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col5" id="col5" value="35">
+                                            <label class="form-check-label" for="col5">
+                                                35
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Redaman SOC > 0.9dB </legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col5" id="col5" value="20">
+                                            <label class="form-check-label" for="col5">
+                                                20
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0"> LOS </legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col5" id="col5" value="0">
+                                            <label class="form-check-label" for="col5">
+                                                0
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <hr>
+
+                                <h6 class="alert alert-dark">Test Kebersihan dan K3</h6>
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Sisa potongan DC atau Core</legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col6" id="col6" value="0" checked>
+                                            <label class="form-check-label" for="col6">
+                                                0
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col6" id="col6" value="5">
+                                            <label class="form-check-label" for="col6">
+                                                5
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Pemakaian APD</legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col7" id="col7" value="0" checked>
+                                            <label class="form-check-label" for="col7">
+                                                0
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col7" id="col7" value="5">
+                                            <label class="form-check-label" for="col7">
+                                                5
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Kerapihan dan kebersihan peralatan setelah praktik</legend>
+                                    <div class="col-sm-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col8" id="col8" value="0" checked>
+                                            <label class="form-check-label" for="col8">
+                                                0
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="col8" id="col8" value="5">
+                                            <label class="form-check-label" for="col8">
+                                                5
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button name="tambahkan" type="submit" class="btn btn-primary">Tambahkan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
-
-
-
 
 <?= $this->EndSection(); ?>

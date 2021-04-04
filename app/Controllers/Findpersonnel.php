@@ -12,6 +12,7 @@ class Findpersonnel extends BaseController
     protected $dataWitelModel;
     protected $dataLevelModel;
     protected $dataAppreciationModel;
+    protected $TbAssessmentModel;
 
     public function __construct()
     {
@@ -23,6 +24,7 @@ class Findpersonnel extends BaseController
         $this->dataWitelModel = new \App\Models\DataWitelModel();
         $this->dataLevelModel = new \App\Models\DataLevelModel();
         $this->dataAppreciationModel = new \App\Models\DataAppreciationModel();
+        $this->TbAssessmentModel = new \App\Models\TbAssessmentModel();
     }
 
     public function index()
@@ -53,7 +55,8 @@ class Findpersonnel extends BaseController
 
     public function detail($id)
     {
-
+        // dd($this->TbAssessmentModel->where(['id_personnel' => $id])->orderBy('id', 'DESC')->first());
+        // dd($this->dataLokerModel->findAll());
         $data = [
             'validation' => \Config\Services::validation(),
             'title' => 'Detail Personnel',
@@ -63,6 +66,7 @@ class Findpersonnel extends BaseController
             'datastream' => $this->dataStreamModel->findAll(),
             'datawitel' => $this->dataWitelModel->findAll(),
             'datalevel' => $this->dataLevelModel->findAll(),
+            'tb_assessment' => $this->TbAssessmentModel->where(['id_personnel' => $id])->orderBy('id', 'DESC')->first(),
         ];
         if (empty($data['datapersonnel'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException("Data Personnel dengan ID " . $id . " tidak ditemukan");
@@ -601,5 +605,33 @@ class Findpersonnel extends BaseController
 
         ];
         return view('findpersonnel/excelrawappreciation', $data);
+    }
+
+    public function save_assessment_komptek()
+    {
+
+        $this->TbAssessmentModel->save([
+            'id_personnel' => $this->request->getVar('id'),
+            'nama' => $this->request->getVar('nama'),
+            'nik' => $this->request->getVar('nik'),
+            'nik_ta' => $this->request->getVar('nik_ta'),
+            'col1' => $this->request->getVar('col1'),
+            'col2' => $this->request->getVar('col2'),
+            'col3' => $this->request->getVar('col3'),
+            'col4' => $this->request->getVar('col4'),
+            'col5' => $this->request->getVar('col5'),
+            'col6' => $this->request->getVar('col6'),
+            'col7' => $this->request->getVar('col7'),
+            'col8' => $this->request->getVar('col8'),
+            'tanggal_assessment' => $this->request->getVar('tanggal_assessment'),
+
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Data assessment berhasil ditambahkan.');
+        // $nik = $this->request->getVar('nik');
+        // session()->setFlashdata('tanda1', $nik);
+
+        return redirect()->to("/findpersonnel/" . $this->request->getVar('id'));
     }
 }
