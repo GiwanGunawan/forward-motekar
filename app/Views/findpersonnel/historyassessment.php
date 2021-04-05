@@ -7,9 +7,12 @@
     <div class="row">
         <div class="col">
             <h5 class="mt-3 alert alert-secondary">History Assessment Kompetensi Teknis</h5>
+            <a href="/findpersonnel/<?= $datapersonnel['id']; ?>">Kembali</a>
         </div>
     </div>
 </div>
+
+
 
 <?php if ($tb_assessmentmodal != null) : ?>
     <div class="container">
@@ -33,7 +36,7 @@
                                 <div class="row">
 
 
-                                    <table class="table">
+                                    <table class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Item</th>
@@ -67,24 +70,15 @@
                                                 <td><?= $tb_assessment['tpsoc']; ?></td>
                                             </tr>
                                             <tr>
-                                                <td>Jumlah SOC yang benar (sisa 1)
-                                                    <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 15) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?>
-                                                    </span>
-                                                </td>
+                                                <td>Jumlah SOC yang benar (sisa 1) <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 15) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?></span></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Jumlah SOC yang benar (sisa 0)
-                                                    <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 10) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?>
-                                                    </span>
-                                                </td>
+                                                <td>Jumlah SOC yang benar (sisa 0) <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 10) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?></span></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Gagal atau perlu tambahan
-                                                    <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 0) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?>
-                                                    </span>
-                                                </td>
+                                                <td>Gagal atau perlu tambahan <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 0) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?></span></td>
                                                 <td></td>
                                             </tr>
                                             <tr>

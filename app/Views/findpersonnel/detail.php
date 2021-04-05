@@ -200,8 +200,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h5 class="mt-3 alert alert-secondary">Summary Assessment Kompetensi Teknis <span class="css2"><a href="/historyassessment/<?= $tb_assessment['id_personnel']; ?>">(Lihat history)</a></span></h5>
-
+            <h5 class="mt-3 alert alert-secondary">Summary Assessment Kompetensi Teknis <span class="css2"><a href="/historyassessment/<?= $datapersonnel['id']; ?>">(Lihat history)</a></span></h5>
         </div>
     </div>
 </div>
@@ -216,7 +215,7 @@
                     <p>Hasil Kelulusan : <?= $tb_assessment['hasil']; ?></p>
                     <p>Detail Assessment :</p>
                 </div>
-                <table class="table">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th scope="col">Item</th>
@@ -250,23 +249,17 @@
                             <td><?= $tb_assessment['tpsoc']; ?></td>
                         </tr>
                         <tr>
-                            <td>Jumlah SOC yang benar (sisa 1)
-                                <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 15) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?>
-                                </span>
+                            <td>Jumlah SOC yang benar (sisa 1)<span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 15) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?></span>
                             </td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Jumlah SOC yang benar (sisa 0)
-                                <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 10) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?>
-                                </span>
+                            <td>Jumlah SOC yang benar (sisa 0)<span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 10) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?></span>
                             </td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Gagal atau perlu tambahan
-                                <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 0) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?>
-                                </span>
+                            <td>Gagal atau perlu tambahan<span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 0) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?></span>
                             </td>
                             <td></td>
                         </tr>

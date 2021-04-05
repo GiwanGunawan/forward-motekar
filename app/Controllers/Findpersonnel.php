@@ -641,6 +641,7 @@ class Findpersonnel extends BaseController
     {
         $data = [
             'title' => 'History Assessment',
+            'datapersonnel' => $this->dataPersonnelModel->detail($id),
             'tb_assessmentmodal' => $this->TbAssessmentModel->where(['id_personnel' => $id])->orderBy('id', 'DESC')->findAll(),
         ];
 
