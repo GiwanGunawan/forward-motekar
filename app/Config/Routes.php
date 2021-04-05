@@ -49,6 +49,9 @@ $routes->get('/rawreport', 'Findpersonnel::rawreport');
 $routes->get('/rawappreciation', 'Findpersonnel::rawappreciation');
 $routes->get('/vot', 'Vot::index');
 
+//route history assessment
+$routes->get('/historyassessment/(:any)', 'Findpersonnel::history_assessment/$1');
+
 //route untuk download file excel
 $routes->get('/excelsumreport', 'Findpersonnel::excelsumreport');
 $routes->get('/excelsumappreciation', 'Findpersonnel::excelsumappreciation');

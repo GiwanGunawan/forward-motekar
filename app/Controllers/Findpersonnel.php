@@ -609,20 +609,22 @@ class Findpersonnel extends BaseController
 
     public function save_assessment_komptek()
     {
+        // dd($this->request->getVar('hasiltred'));
 
         $this->TbAssessmentModel->save([
             'id_personnel' => $this->request->getVar('id'),
             'nama' => $this->request->getVar('nama'),
             'nik' => $this->request->getVar('nik'),
             'nik_ta' => $this->request->getVar('nik_ta'),
-            'col1' => $this->request->getVar('col1'),
-            'col2' => $this->request->getVar('col2'),
-            'col3' => $this->request->getVar('col3'),
-            'col4' => $this->request->getVar('col4'),
-            'col5' => $this->request->getVar('col5'),
-            'col6' => $this->request->getVar('col6'),
-            'col7' => $this->request->getVar('col7'),
-            'col8' => $this->request->getVar('col8'),
+            'tsp1' => $this->request->getVar('tsp1'),
+            'tsp2' => $this->request->getVar('tsp2'),
+            'tsp3' => $this->request->getVar('tsp3'),
+            'tpsoc' => $this->request->getVar('tpsoc'),
+            'tred' => $this->request->getVar('tred'),
+            'hasiltred' => $this->request->getVar('hasiltred'),
+            'tkk1' => $this->request->getVar('tkk1'),
+            'tkk2' => $this->request->getVar('tkk2'),
+            'tkk3' => $this->request->getVar('tkk3'),
             'tanggal_assessment' => $this->request->getVar('tanggal_assessment'),
 
         ]);
@@ -633,5 +635,15 @@ class Findpersonnel extends BaseController
         // session()->setFlashdata('tanda1', $nik);
 
         return redirect()->to("/findpersonnel/" . $this->request->getVar('id'));
+    }
+
+    public function history_assessment($id)
+    {
+        $data = [
+            'title' => 'History Assessment',
+            'tb_assessmentmodal' => $this->TbAssessmentModel->where(['id_personnel' => $id])->orderBy('id', 'DESC')->findAll(),
+        ];
+
+        return view('findpersonnel/historyassessment', $data);
     }
 }

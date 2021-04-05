@@ -200,7 +200,8 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h5 class="mt-3 alert alert-secondary">Summary Assessment Kompetensi Teknis</h5>
+            <h5 class="mt-3 alert alert-secondary">Summary Assessment Kompetensi Teknis <span class="css2"><a href="/historyassessment/<?= $tb_assessment['id_personnel']; ?>">(Lihat history)</a></span></h5>
+
         </div>
     </div>
 </div>
@@ -211,7 +212,7 @@
             <div class="col">
                 <div class="container ">
                     <p>Tanggal Assessment : <?= $tb_assessment['tanggal_assessment']; ?></p>
-                    <p>Total perolehan score : <?= $tb_assessment['sumcolall']; ?></p>
+                    <p>Total perolehan score : <?= $tb_assessment['sumall']; ?></p>
                     <p>Hasil Kelulusan : <?= $tb_assessment['hasil']; ?></p>
                     <p>Detail Assessment :</p>
                 </div>
@@ -226,18 +227,18 @@
                     <tbody>
                         <tr class="css3">
                             <td> Test Standard Pemasangan</td>
-                            <td><?= $tb_assessment['sumcol123']; ?></td>
+                            <td><?= $tb_assessment['sumtsp']; ?></td>
                         </tr>
                         <tr>
-                            <td>Pemasangan S-Klem <span class="badge badge-secondary">(score: <?= $tb_assessment['col1']; ?>)</span></td>
+                            <td>Pemasangan S-Klem <span class="badge badge-secondary">(score: <?= $tb_assessment['tsp1']; ?>)</span></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Pemasangan DC ke OTP <span class="badge badge-secondary">(score: <?= $tb_assessment['col2']; ?>)</span></td>
+                            <td>Pemasangan DC ke OTP <span class="badge badge-secondary">(score: <?= $tb_assessment['tsp2']; ?>)</span></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Pemasangan DC ke ODC <span class="badge badge-secondary">(score: <?= $tb_assessment['col3']; ?>)</span></td>
+                            <td>Pemasangan DC ke ODC <span class="badge badge-secondary">(score: <?= $tb_assessment['tsp3']; ?>)</span></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -246,25 +247,25 @@
                         </tr>
                         <tr class="css3">
                             <td>Test Pembuatan SOC</td>
-                            <td><?= $tb_assessment['col4']; ?></td>
+                            <td><?= $tb_assessment['tpsoc']; ?></td>
                         </tr>
                         <tr>
                             <td>Jumlah SOC yang benar (sisa 1)
-                                <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 15) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
+                                <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 15) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?>
                                 </span>
                             </td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>Jumlah SOC yang benar (sisa 0)
-                                <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 10) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
+                                <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 10) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?>
                                 </span>
                             </td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>Gagal atau perlu tambahan
-                                <span class="badge badge-secondary"><?= ($tb_assessment['col4'] == 0) ? "(score: " . $tb_assessment['col4'] . ")" : "" ?>
+                                <span class="badge badge-secondary"><?= ($tb_assessment['tpsoc'] == 0) ? "(score: " . $tb_assessment['tpsoc'] . ")" : null ?>
                                 </span>
                             </td>
                             <td></td>
@@ -275,22 +276,26 @@
                         </tr>
                         <tr class="css3">
                             <td>Test Redaman</td>
-                            <td><?= $tb_assessment['col5']; ?></td>
+                            <td><?= $tb_assessment['tred']; ?></td>
                         </tr>
                         <tr>
-                            <td>Redaman SOC < 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 55) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                            <td>Hasil redaman yang didapat = <span class="badge badge-secondary"><?= $tb_assessment['hasiltred']; ?> dB</span></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Redaman SOC 0.7 - 0.9 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 35) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                            <td>Redaman SOC < 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['tred'] == 55) ? "(score: " . $tb_assessment['tred'] . ")" : "" ?></span></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Redaman SOC > 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 20) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                            <td>Redaman SOC 0.7 - 0.9 dB <span class="badge badge-secondary"><?= ($tb_assessment['tred'] == 35) ? "(score: " . $tb_assessment['tred'] . ")" : "" ?></span></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>LOS <span class="badge badge-secondary"><?= ($tb_assessment['col5'] == 0) ? "(score: " . $tb_assessment['col5'] . ")" : "" ?></span></td>
+                            <td>Redaman SOC > 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['tred'] == 20) ? "(score: " . $tb_assessment['tred'] . ")" : "" ?></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>LOS <span class="badge badge-secondary"><?= ($tb_assessment['tred'] == 0) ? "(score: " . $tb_assessment['tred'] . ")" : "" ?></span></td>
                             <td></td>
                         </tr>
                         <tr>
@@ -299,18 +304,18 @@
                         </tr>
                         <tr class="css3">
                             <td>Test Kebersihan dan K3</td>
-                            <td><?= $tb_assessment['sumcol678']; ?></td>
+                            <td><?= $tb_assessment['sumtkk']; ?></td>
                         </tr>
                         <tr>
-                            <td>Sisa potongan DC atau Core <span class="badge badge-secondary">(score: <?= $tb_assessment['col6']; ?>)</span></td>
+                            <td>Sisa potongan DC atau Core <span class="badge badge-secondary">(score: <?= $tb_assessment['tkk1']; ?>)</span></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Pemakaian APD <span class="badge badge-secondary">(score: <?= $tb_assessment['col7']; ?>)</span></td>
+                            <td>Pemakaian APD <span class="badge badge-secondary">(score: <?= $tb_assessment['tkk2']; ?>)</span></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Kerapihan dan kebersihan peralatan setelah praktik <span class="badge badge-secondary">(score: <?= $tb_assessment['col8']; ?>)</span></td>
+                            <td>Kerapihan dan kebersihan peralatan setelah praktik <span class="badge badge-secondary">(score: <?= $tb_assessment['tkk3']; ?>)</span></td>
                             <td></td>
                         </tr>
                     </tbody>
@@ -632,14 +637,14 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Pemasangan S-Klem</legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col1" id="col1" value="0" checked>
-                                            <label class="form-check-label" for="col1">
+                                            <input class="form-check-input" type="radio" name="tsp1" id="tsp1" value="0" checked>
+                                            <label class="form-check-label" for="tsp1">
                                                 0
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col1" id="col1" value="5">
-                                            <label class="form-check-label" for="col1">
+                                            <input class="form-check-input" type="radio" name="tsp1" id="tsp1" value="5">
+                                            <label class="form-check-label" for="tsp1">
                                                 5
                                             </label>
                                         </div>
@@ -651,14 +656,14 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Pemasangan DC ke ODP</legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col2" id="col2" value="0" checked>
-                                            <label class="form-check-label" for="col2">
+                                            <input class="form-check-input" type="radio" name="tsp2" id="tsp2" value="0" checked>
+                                            <label class="form-check-label" for="tsp2">
                                                 0
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col2" id="col2" value="5">
-                                            <label class="form-check-label" for="col2">
+                                            <input class="form-check-input" type="radio" name="tsp2" id="tsp2" value="5">
+                                            <label class="form-check-label" for="tsp2">
                                                 5
                                             </label>
                                         </div>
@@ -667,17 +672,17 @@
 
 
                                 <fieldset class="form-group row">
-                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Pemasangan DC ke ODC</legend>
+                                    <legend class="col-form-label col-sm-9 float-sm-left pt-0">Pemasangan DC ke OTP/ROSET</legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col3" id="col3" value="0" checked>
-                                            <label class="form-check-label" for="col3">
+                                            <input class="form-check-input" type="radio" name="tsp3" id="tsp3" value="0" checked>
+                                            <label class="form-check-label" for="tsp3">
                                                 0
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col3" id="col3" value="5">
-                                            <label class="form-check-label" for="col3">
+                                            <input class="form-check-input" type="radio" name="tsp3" id="tsp3" value="5">
+                                            <label class="form-check-label" for="tsp3">
                                                 5
                                             </label>
                                         </div>
@@ -691,8 +696,8 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Jumlah SOC yang benar (sisa 1)</legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col4" id="col4" value="15" checked>
-                                            <label class="form-check-label" for="col4">
+                                            <input class="form-check-input" type="radio" name="tpsoc" id="tpsoc" value="15" checked>
+                                            <label class="form-check-label" for="tpsoc">
                                                 15
                                             </label>
                                         </div>
@@ -703,8 +708,8 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Jumlah SOC yang benar (sisa 0)</legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col4" id="col4" value="10">
-                                            <label class="form-check-label" for="col4">
+                                            <input class="form-check-input" type="radio" name="tpsoc" id="tpsoc" value="10">
+                                            <label class="form-check-label" for="tpsoc">
                                                 10
                                             </label>
                                         </div>
@@ -715,8 +720,8 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Gagal atau perlu tambahan</legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col4" id="col4" value="0">
-                                            <label class="form-check-label" for="col4">
+                                            <input class="form-check-input" type="radio" name="tpsoc" id="tpsoc" value="0">
+                                            <label class="form-check-label" for="tpsoc">
                                                 0
                                             </label>
                                         </div>
@@ -730,8 +735,8 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Redaman SOC < 0.7dB </legend>
                                             <div class="col-sm-3">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="col5" id="col5" value="55" checked>
-                                                    <label class="form-check-label" for="col5">
+                                                    <input class="form-check-input" type="radio" name="tred" id="tred" value="55" checked>
+                                                    <label class="form-check-label" for="tred">
                                                         55
                                                     </label>
                                                 </div>
@@ -742,8 +747,8 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Redaman SOC 0.7dB - 0.9dB </legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col5" id="col5" value="35">
-                                            <label class="form-check-label" for="col5">
+                                            <input class="form-check-input" type="radio" name="tred" id="tred" value="35">
+                                            <label class="form-check-label" for="tred">
                                                 35
                                             </label>
                                         </div>
@@ -754,8 +759,8 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Redaman SOC > 0.9dB </legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col5" id="col5" value="20">
-                                            <label class="form-check-label" for="col5">
+                                            <input class="form-check-input" type="radio" name="tred" id="tred" value="20">
+                                            <label class="form-check-label" for="tred">
                                                 20
                                             </label>
                                         </div>
@@ -766,13 +771,23 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0"> LOS </legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col5" id="col5" value="0">
-                                            <label class="form-check-label" for="col5">
+                                            <input class="form-check-input" type="radio" name="tred" id="tred" value="0">
+                                            <label class="form-check-label" for="tred">
                                                 0
                                             </label>
                                         </div>
                                     </div>
                                 </fieldset>
+
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-7 col-form-label">Hasil redaman yang didapat (dB)</label>
+                                    <div class="col-sm-5">
+                                        <input name="hasiltred" class="form-control <?= ($validation->hasError('hasiltred')) ? 'is-invalid' : ''; ?>" type="text" placeholder="Tulis hasil disini" value="<?= old('hasiltred'); ?>">
+                                        <div id="validationServer03Feedback" class="invalid-feedback">
+                                            <?= $validation->getError('hasiltred'); ?>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <hr>
 
@@ -781,14 +796,14 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Sisa potongan DC atau Core</legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col6" id="col6" value="0" checked>
-                                            <label class="form-check-label" for="col6">
+                                            <input class="form-check-input" type="radio" name="tkk1" id="tkk1" value="0" checked>
+                                            <label class="form-check-label" for="tkk1">
                                                 0
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col6" id="col6" value="5">
-                                            <label class="form-check-label" for="col6">
+                                            <input class="form-check-input" type="radio" name="tkk1" id="tkk1" value="5">
+                                            <label class="form-check-label" for="tkk1">
                                                 5
                                             </label>
                                         </div>
@@ -799,14 +814,14 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Pemakaian APD</legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col7" id="col7" value="0" checked>
-                                            <label class="form-check-label" for="col7">
+                                            <input class="form-check-input" type="radio" name="tkk2" id="tkk2" value="0" checked>
+                                            <label class="form-check-label" for="tkk2">
                                                 0
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col7" id="col7" value="5">
-                                            <label class="form-check-label" for="col7">
+                                            <input class="form-check-input" type="radio" name="tkk2" id="tkk2" value="5">
+                                            <label class="form-check-label" for="tkk2">
                                                 5
                                             </label>
                                         </div>
@@ -817,14 +832,14 @@
                                     <legend class="col-form-label col-sm-9 float-sm-left pt-0">Kerapihan dan kebersihan peralatan setelah praktik</legend>
                                     <div class="col-sm-3">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col8" id="col8" value="0" checked>
-                                            <label class="form-check-label" for="col8">
+                                            <input class="form-check-input" type="radio" name="tkk3" id="tkk3" value="0" checked>
+                                            <label class="form-check-label" for="tkk3">
                                                 0
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="col8" id="col8" value="5">
-                                            <label class="form-check-label" for="col8">
+                                            <input class="form-check-input" type="radio" name="tkk3" id="tkk3" value="5">
+                                            <label class="form-check-label" for="tkk3">
                                                 5
                                             </label>
                                         </div>
