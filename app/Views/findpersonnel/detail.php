@@ -76,56 +76,79 @@
                     <div class="col-md-8">
 
                         <div class="card-body">
-                            <h5 class="card-title my-1"><?= $datapersonnel['nama']; ?></h5>
 
-                            <div class="form-group row my-0 py-0">
-                                <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">Loker</label>
-                                <div class="col-sm-10 align-self-center my-0 py-0">
-                                    <?= $datapersonnel['loker']; ?>
-                                </div>
-                            </div>
-                            <div class="form-group row my-0 py-0">
-                                <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">Stream</label>
-                                <div class="col-sm-10 align-self-center my-0 py-0">
-                                    <?= $datapersonnel['stream']; ?>
-                                </div>
-                            </div>
-                            <div class="form-group row my-0 py-0">
-                                <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">STO</label>
-                                <div class="col-sm-10 align-self-center my-0 py-0">
-                                    <?= $datapersonnel['sto']; ?>
-                                </div>
-                            </div>
-                            <div class="form-group row my-0 py-0">
-                                <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">WITEL</label>
-                                <div class="col-sm-10 align-self-center my-0 py-0">
-                                    <?= $datapersonnel['witel']; ?>
-                                </div>
-                            </div>
-                            <div class="form-group row my-0 py-0">
-                                <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">NIK MITRA</label>
-                                <div class="col-sm-10 align-self-center my-0 py-0">
-                                    <?= $datapersonnel['nik_ta']; ?>
-                                </div>
-                            </div>
-                            <div class="form-group row my-0 py-0">
-                                <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">NIK</label>
-                                <div class="col-sm-10 align-self-center my-0 py-0">
-                                    <?= $datapersonnel['nik']; ?>
-                                </div>
-                            </div>
-                            <div class="form-group row my-0 py-0">
-                                <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">Mitra</label>
-                                <div class="col-sm-10 align-self-center my-0 py-0">
-                                    <?= $datapersonnel['mitra']; ?>
-                                </div>
-                            </div>
-                            <div class="form-group row my-0 py-0">
-                                <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">Alamat</label>
-                                <div class="col-sm-10 align-self-center my-0 py-0">
-                                    <?= $datapersonnel['alamat']; ?>
-                                </div>
-                            </div>
+                            <ul class="list-group list-group-flush">
+
+                                <li class="list-group-item my-0 py-0">
+                                    <h4 class="card-title my-1"><?= $datapersonnel['nama']; ?></h4>
+                                </li>
+                                <li class="list-group-item my-0 py-0">
+                                    <div class="form-group row my-0 py-0">
+                                        <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">Loker</label>
+                                        <div class="col-sm-10 align-self-center my-0 py-0">
+                                            <?= $datapersonnel['loker']; ?>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item my-0 py-0">
+                                    <div class="form-group row my-0 py-0">
+                                        <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">Stream</label>
+                                        <div class="col-sm-10 align-self-center my-0 py-0">
+                                            <?= $datapersonnel['stream']; ?>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item my-0 py-0">
+                                    <div class="form-group row my-0 py-0">
+                                        <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">STO</label>
+                                        <div class="col-sm-10 align-self-center my-0 py-0">
+                                            <?= $datapersonnel['sto']; ?>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item my-0 py-0">
+                                    <div class="form-group row my-0 py-0">
+                                        <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">WITEL</label>
+                                        <div class="col-sm-10 align-self-center my-0 py-0">
+                                            <?= $datapersonnel['witel']; ?>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item my-0 py-0">
+                                    <div class="form-group row my-0 py-0">
+                                        <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">NIK MITRA</label>
+                                        <div class="col-sm-10 align-self-center my-0 py-0">
+                                            <?= $datapersonnel['nik_ta']; ?>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item my-0 py-0">
+                                    <div class="form-group row my-0 py-0">
+                                        <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">NIK</label>
+                                        <div class="col-sm-10 align-self-center my-0 py-0">
+                                            <?= $datapersonnel['nik']; ?>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item my-0 py-0">
+                                    <div class="form-group row my-0 py-0">
+                                        <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">Mitra</label>
+                                        <div class="col-sm-10 align-self-center my-0 py-0">
+                                            <?= $datapersonnel['mitra']; ?>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item my-0 py-0">
+                                    <div class="form-group row my-0 py-0">
+                                        <label class="col-sm-2 col-form-label font-weight-bold my-0 py-0 font-italic">Alamat</label>
+                                        <div class="col-sm-10 align-self-center my-0 py-0">
+                                            <?= $datapersonnel['alamat']; ?>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+
                             <button type="button" class="btn btn-warning mb-3 mt-3" data-toggle="modal" data-target="#exampleModal">
                                 Ubah
                             </button>
