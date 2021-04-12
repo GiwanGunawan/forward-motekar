@@ -284,7 +284,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Redaman SOC > 0.7 dB <span class="badge badge-secondary"><?= ($tb_assessment['tred'] == 20) ? "(score: " . $tb_assessment['tred'] . ")" : "" ?></span></td>
+                            <td>Redaman SOC > 0.9 dB <span class="badge badge-secondary"><?= ($tb_assessment['tred'] == 20) ? "(score: " . $tb_assessment['tred'] . ")" : "" ?></span></td>
                             <td></td>
                         </tr>
                         <tr>
